@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+
+        <title>Proyecto 8</title>
+        <link id="favi" rel="icon" href="favicon-ConvertImage.ico">
+       <style>
+           *{
+           margin:0;
+           padding:0;
+           box-sizing: border-box;
+           }
+           body{
+               font-family:'open sans';
+           }
+           .contenedor{
+               padding:60px 0;
+               width: 90%;
+               max-width:1000px;
+               margin:auto;
+               overflow:hidden;
+           }
+           .titulo{
+               color:#642a73;
+               font-size:30px;
+               text-align:center;
+               margin-bottom:60px;
+           }
+           /*Header*/
+           header{
+               width:100%;
+               height:600px;
+               /*Esta parte colore el fondo rosa degradado,deberia transparentarse y mostrar una imagen tambien,pero parece  que khan academy no puede hacerlo*/
+               background: #bc4e9c;
+               background:-webkit-linear-gradient(to right,#f80759,#bc4e9c),Url(../https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Greca_de_Mitla..JPG/800px-Greca_de_Mitla..JPG);
+               background:linear-gradient(to right,#f80759,#bc4e9c),url(../https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Greca_de_Mitla..JPG/800px-Greca_de_Mitla..JPGg);
+               background-size:cover;
+               background-attachment:fixed;
+               position:relative;
+               
+           }
+           nav{
+               text-align:right;
+               padding:30px 50px 0 0;
+           }
+           nav>a{
+               color:#fff;
+               font-weight:300;
+               text-decoration:none;
+               margin-right:10px;
+           }
+           nav>a:hover{
+            text-decoration:underline;
+           }
+           header .textos-header{
+               display:flex;
+               height:402px;
+               width:100%;
+               align-items:center;
+               justify-content:center;
+               flex-direction:column;
+               text-align:center;
+           }
+           .textos-header h1{
+               font-size:50px;
+               color:#fff;
+           }
+           .textos-header h2{
+               font-size:30px;
+               font-weight:300;
+               color:#fff;
+           }
+           
+           .wave{
+               position:absolute;
+               bottom:0;
+               width:100%;
+           }
+           /*About-us*/
+           .contenedor-sobre-nosotros{
+               display:flex;
+               justify-content:space-evenly;
+               
+           }
+          
+               
+           
+           
+          
+           .sobre-nosotros .contenido-textos{
+               width:48%;
+           }
+           .contenido-textos h3{
+               margin-bottom:15px;
+           }
+           .contenido-textos h3 span{
+               background:#4d0686;
+               color:#fff;
+               border-radius:50%;
+               display:inline-block;
+               text-align:center;
+               width:30px;
+               height:30px;
+               padding:2px;
+               box-shadow:0 0 6px 0 rgba(0,0,0,.5);
+               margin-right:5px;
+           }
+           .contenido-textos p{
+               
+               padding:0px 0px 30px 15px;
+           }
+           /*galeria,la parte mas dinamica,donde hice animaciones para que al pasar el cursor por las imagenes muestren un poco de informacion */
+           .portafolio{
+               
+               background:#f2f2f2;
+           }
+           .galery{
+               display: flex;
+               justify-content:space-evenly;
+               flex-wrap:wrap;
+           }
+           .imagen-port{
+               width:94%;
+               margin-bottom:10px;
+               
+               overflow:hidden;
+               position:relative;
+               cursor:pointer;
+               box-shadow:0 0 6px 0 rgba(0,0,o,.5);
+           }
+           .imagen-port > img{
+               width:100%;
+               height:100%;
+               object-fit:cover;
+               display:block;
+           }
+           .hover-galeria{
+               position:absolute;
+               width:100%;
+               height:100%;
+               top:0;
+               transform:scale(0);
+               background:hsla(273,91%,27%,0.7);
+               transition:transform .5s;
+               display:flex;
+               justify-content:center;
+               align-items:center;
+               flex-direction:column;
+           }
+           .hover-galeria img{
+               width:50px;
+           }
+           .hover-galeria p{
+               color:#fff;
+           }
+           .imagen-port:hover .hover-galeria{
+               transform:scale(1);
+           }
+           /*Esto edita la seccion de los comentarios de los visitantes,anteriormente se pensaba hacer una pagina de vuelos por eso las variables estan contextualizadas a clientes*/
+           .cards{
+               display:flex;
+               justify-content:space-evenly;
+               
+           }
+           .cards .card{
+               background:#4d0686;
+               display:flex;
+               width:46%;
+               height:200px;
+               align-items:center;
+               justify-content:space-evenly;
+               border-radius:5px;
+               box-shadow:0 0 6px 0 rgba(0,0,0.0.6);
+           }
+           .cards .card img{
+               width:100px;
+               height:100px;
+               object-fit:cover;
+               border:3px solid #fff;
+               border-radius:50%;
+               display:block;
+           }
+           .cards .card >.contenido-texto-card{
+               width:60%;
+               color:#fff;
+           }
+           .cards .card > .contenido-texto-card p{
+               font-weight:300;
+               padding-top:5px;
+           }
+           /*Our team*/
+           .about.services{
+               background:#f2f2f2;
+               padding-bottom:30px;
+           }
+           .servicio-cont{
+               display:flex;
+               justify-content:space-between;
+               align-items:center;
+               
+           }
+           .servicio-ind{
+               width:28%;
+               text-align:center;
+               
+           }
+           .servicio-ind img{
+               width:90%;
+               
+           }
+           .sercio-ind h3{
+               margin:10px;
+               
+           }
+           .servicio-ind p{
+               font-weight:300;
+               text-align:justify;
+           }
+           /*footer,aqui se editan los datos hasta el final de la pagina*/
+           footer{
+               background:#414141;
+               padding:60px 0 30px 0;
+               margin:auto;
+               overflow:hidden;
+           }
+           .contenedor-footer{
+               display:flex;
+               width:40%;
+               justify-content:space-evenly;
+               margin:auto;
+               padding-bottom:50px;
+               border-bottom:1px solid #ccc;
+           }
+           .contenedor-foo{
+               text-align:center;
+           }
+           .contenedor-foo h4{
+               color:#fff;
+               border-bottom:3px solid #af20d3;
+               padding-bottom:5px;
+               margin-bottom:10px;
+               
+           }
+           .contenedor-foo p{
+               color:#fff;
+               border-bottom:3px solid #ccc;
+               padding-bottom:5px;
+               margin-bottom:10px;
+               
+           }
+           .titulo-final{
+               text-align:center;
+               font-size:24px;
+               margin:20px 0 0 0;
+               color:#9e9797;
+               
+           }
+           
+       </style>
+       
+        
+    </head>
+    <body>
+        
+        <header>
+          
+          <nav>
+              
+              <a href="../index.html">Inicio</a>
+              <a href="#">Acerca de</a>
+              <a href="#">Servicios</a>
+              <a href="#">Categorias</a>
+              <a href="#">Contacto</a>
+          </nav>
+           <section class="textos-header">
+               <h1>Descubre sus hermosos lugares</h1>
+               <h2>¡México mágico !</h2>
+               
+           </section>
+               <div class="wave" style="height:150px;overflow:hidden;"><svg viewBox="0 0 500 150"preserveAspectRatio="none"style="height:100%;width: 100%;"><path d="M0.00,49.98C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150 L0.00,150.00 Z"style="stroke:none;fill:#fff;"></path></svg></div>  
+           
+        </header>
+        <main>
+            <section class="contenedor-sobre-nosotros"> 
+              
+              <div class="contenedor-sobre-nosotros">
+                  
+                  <div class="contenido-textos">
+                   <h3><span>.</span>Visita el paradisiaco estado de Oaxaca</h3>                   <p>Aparte de encontrar hermosos paisajes,encontraras una rica gastronomia,artesanias como alebrijes,barro negro entre otras ,ya que es un estado rico en cultura encontraras una variedad de museos,monumentos,disfruta de la guelaguetza.</p>
+                  
+                      <h3><span>.</span>Visita tambien el estado de Quintana Roo</h3>                   <p>Disfruta de sus hemosas playas y algunas ruinas ¡atrevete a explorar sus hermosos paisajes!.</p>
+                      <h3><span>.</span>Aunque no puedes vistar México sin ir a Yucatán  </h3>                   <p>Te sorprendará las magnificas ruinas de Chiché n Itzá .</p>
+                   </div>
+                       
+              </div>
+
+            </section>
+            <section class="portafolio">
+                   <div class="contenedor">
+                      <h2 class="titulo">Ver para creer,¡checate esto!</h2>
+                       <div class="imagen-port">
+                           
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Templo_de_Santo_Domingo_de_Guzm%C3%A1n_%28Oaxaca%29.JPG/800px-Templo_de_Santo_Domingo_de_Guzm%C3%A1n_%28Oaxaca%29.JPG" alt="catedral santo domingo">
+                           <div class="hover-galeria">
+                              
+                              
+                              <p>Oaxaca
+                              SantoDomingo</p>
+                           </div>
+                       </div>
+                        <div class="imagen-port">
+                           
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Auditorio_Guelaguetza_en_Oaxaca.jpg/800px-Auditorio_Guelaguetza_en_Oaxaca.jpg" alt="Auditorio Guelaguetza">
+                           <div class="hover-galeria">
+                              
+                              <p>Oaxaca
+                              Auditorio Guelaguetza</p>
+                           </div>
+                       </div>
+                        <div class="imagen-port">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/San_Jos%C3%A9_del_Pac%C3%ADfico.jpg/800px-San_Jos%C3%A9_del_Pac%C3%ADfico.jpg" alt="La sierra San Jose del pacifico">
+                           <div class="hover-galeria">
+                              
+                              
+                              <p>Oaxaca,
+                              San Jose del Pacifico</p>
+                           </div>
+                       </div>
+                       <div class="imagen-port">
+                           
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Cancun_aerial_photo_by_safa.jpg/280px-Cancun_aerial_photo_by_safa.jpg" alt="Cancun">
+                           <div class="hover-galeria">
+                              
+                              <p>Quintana Roo
+                              Cancún </p>
+                           </div>
+                       </div>
+                       <div class="imagen-port">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Kukulc%C3%A1n-Pyramide_in_Chichen_Itza.jpg/800px-Kukulc%C3%A1n-Pyramide_in_Chichen_Itza.jpg" alt="La sierra San Jose del pacifico">
+                           <div class="hover-galeria">
+                              
+                              <p>Yucatán 
+                              Chiché Itza </p>
+                           </div>
+                       </div>
+                   </div>
+            </section>
+            
+                <section class="clientes-contenedor">
+                  <h2 class="titulo">Que dicen nuestros visitantes</h2>
+                    <div class="cards">
+                        <div class="card">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Bill_Gates_July_2014.jpg/398px-Bill_Gates_July_2014.jpg">
+                            <div class="contenido-texto-card">
+                              <h4>Name:Bill Gates</h4>
+                              <p>
+I loved visiting Oaxaca, the crafts, the food, its people</p>
+                                
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="https://www.kasandbox.org/programming-images/cute/CharacterPinkGirl.png">
+                            <div class="contenido-texto-card">
+                              <h4>Name:Alex Zedra</h4>
+                              <p>
+I love Mexican beaches, especially those of Quintana Roo</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                
+            </section>
+            <section class="about-services"> 
+                <div class="contenedor">
+                   <h2 class="titulo">Tal vez te interese</h2>
+                   <div class="servicio-cont">
+                     <div class="servicio-ind"></div>
+                     <div class="servicio-ind">
+                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Comida_en_la_Feria_del_Mole_2014_10.JPG/300px-Comida_en_la_Feria_del_Mole_2014_10.JPG">
+                         <h3>Mole</h3>
+                         <p>Platillo Oaxaqueño</p>
+                     </div>
+                     <div class="servicio-ind">
+                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/AlebrijeShopStatue.JPG/150px-AlebrijeShopStatue.JPG">
+                         <h3>Alebrijes</h3>
+                         <p>SanMartin Tílcajete </p>
+                     </div>
+                      <div class="servicio-ind">
+                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/T%C3%A9cnicas_de_acabado_del_barro_negro.JPG/800px-T%C3%A9cnicas_de_acabado_del_barro_negro.JPG">
+                         <h3>Barro Negro</h3>
+                         <p>SanBartolo Coyotepect </p>
+                     </div>
+                  </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div class="contenedor-footer">
+                <div class="contenedor-foo">
+                    <h4>Telefono</h4>
+                    <p>95244</p>
+                </div>
+                 <div class="contenedor-foo">
+                    <h4>Email</h4>
+                    <p>franco@</p>
+                </div>
+                 <div class="contenedor-foo">
+                    <h4>Ubicación </h4>
+                    <p>Oaxaca</p>
+                </div>
+            </div>
+            <h2 class="titulo-final">&copy;FrancoFM | FelipeSnow </h2>
+        </footer>
+        
+    </body>
+</html>
